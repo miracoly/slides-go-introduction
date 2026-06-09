@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat openspec/changes/*/proposal.md)",
+      "Bash(openspec new:*)",
+      "Bash(openspec status:*)",
+      "Bash(openspec instructions:*)",
+      "Bash(go test:*)",
+      "Bash(task test:*)"
+    ]
+  }
+}
