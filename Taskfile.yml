@@ -1,0 +1,17 @@
+version: "3"
+
+tasks:
+  test:
+    desc: Run exercise tests. Use "task test -- 01" to run a specific exercise.
+    cmds:
+      - |
+        {{if .CLI_ARGS -}}
+        dir=$(ls -d exercises/{{.CLI_ARGS}}* 2>/dev/null | head -1)
+        if [ -z "$dir" ]; then
+          echo "No exercise matching '{{.CLI_ARGS}}' found" >&2
+          exit 1
+        fi
+        go test -v ./"$dir"/...
+        {{- else -}}
+        go test -v ./exercises/...
+        {{- end}}
