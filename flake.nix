@@ -50,5 +50,13 @@
           unset red green yellow bold reset
         '';
       };
+      apps.slides = {
+        type = "app";
+        program = toString (pkgs.writeShellScript "show-slides" ''
+            rootDir="$(git rev-parse --show-toplevel)"
+            cd "$rootDir/slides"
+          exec ${pkgs.reveal-md}/bin/reveal-md slides.md "$@"
+        '');
+      };
     });
 }
