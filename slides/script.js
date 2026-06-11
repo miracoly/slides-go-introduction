@@ -22,11 +22,20 @@ Reveal.on('ready', () => {
   let trailIdx = 0;
   let lastSpawn = 0;
 
+  let laserLocked = false;
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'q') document.body.classList.add('laser-active');
+    if (e.key === 'Q' && e.shiftKey) {
+      laserLocked = !laserLocked;
+      document.body.classList.toggle('laser-active', laserLocked);
+    } else if (e.key === 'q' && !e.shiftKey && !laserLocked) {
+      document.body.classList.add('laser-active');
+    }
   });
   document.addEventListener('keyup', (e) => {
-    if (e.key === 'q') document.body.classList.remove('laser-active');
+    if (e.key === 'q' && !laserLocked) {
+      document.body.classList.remove('laser-active');
+    }
   });
   document.addEventListener('mousemove', (e) => {
     dot.style.left = e.clientX + 'px';
