@@ -75,6 +75,18 @@ func main() {
 
 ---
 
+## Batteries Included
+
+| What you need | Go stdlib |
+|---|---|
+| HTTP server | `net/http` |
+| JSON handling | `encoding/json` |
+| SQL database | `database/sql` |
+| Testing | `testing` |
+| Logging | `log/slog` |
+
+---
+
 ## Packages
 
 ```go
